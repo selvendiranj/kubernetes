@@ -1,0 +1,9 @@
+#cloud-config
+users:
+- name: selven
+passwd: Kubemaster
+groups:
+- sudo
+- docker
+ssh-authorized-keys:
+- "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhibptsB9FD+l5/Hd4jIgxf/VFRPvEQCMIaW4hbzkmRrWt5/CXJoyhvBnj1PGd6nmscDSkJ5hm1deA6rFRWGnwC60/l+GkqKK9sdzBbT/Pn1Tf6/f6iERab80ND9su+0MLmCJEKiLTpx3sZUPQv2B6SBIXFXYiIHu0augDN1ImAZsaNHEI/KhIp4gyHTtXvtUfUIRSgBiAEz4Vim0IBlrHJPZPCtgBD07Fowqnf91zxBLPGBuwtSY6oMzsAYARvzEG+ImjFxvBSKUwFvcsP1oM+eWc0DT73GnOi+sQSl1+WmKA/GDkpALmecq4O+xBdxEb4X6OKnkZKudcM40v5YFGQ== rsa-key-20190331"
