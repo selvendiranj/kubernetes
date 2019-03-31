@@ -10,8 +10,9 @@
 - curl https://cdn.jsdelivr.net/gh/jselvendiran/kubernetes/cloud_config.yaml
 - coreos-cloudinit -validate --from-file cloud_config.yml
 - sudo coreos-install -d /dev/sda -C stable -c cloud_config.yml
-- ssh to Node with privateKey file
 
+## Connect & Check Installation
+- ssh to Node with privateKey file
 - rkt version
 - docker -v
 - uname -r
