@@ -1,7 +1,7 @@
 #cloud-config
 users:
 - name: selven
-passwd: Kubemaster
+- passwd: Kubemaster
 groups:
 - sudo
 - docker
