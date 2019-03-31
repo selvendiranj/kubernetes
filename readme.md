@@ -18,7 +18,7 @@
 ## Connect to Container Linux & Check Installation
 - ssh to Node with privateKey file
 - rkt version
-- docker -v
+- docker version
 - uname -r
 - cat /etc/motd
 
