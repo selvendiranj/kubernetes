@@ -6,7 +6,7 @@
 - https://www.ssh.com/ssh/putty/download
 
 ## Installation
-- boot into download container linux iso
+- boot into downloaded container linux iso
 - curl https://cdn.jsdelivr.net/gh/jselvendiran/kubernetes/cloud_config.yaml
 - coreos-cloudinit -validate --from-file cloud_config.yml
 - sudo coreos-install -d /dev/sda -C stable -c cloud_config.yml
