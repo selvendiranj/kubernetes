@@ -10,9 +10,9 @@
 ## Container Linux Installation
 - Create VM in vmware/virtualbox/hyperv with your desired networking (NAT/Bridged/Internal)
 - boot into downloaded container linux iso
-- curl https://cdn.jsdelivr.net/gh/jselvendiran/kubernetes/cloud_config.yaml
-- coreos-cloudinit -validate --from-file cloud_config.yml
-- sudo coreos-install -d /dev/sda -C stable -c cloud_config.yml
+- curl https://cdn.jsdelivr.net/gh/jselvendiran/kubernetes/cloud_config.yaml -o cloud-config.yaml
+- coreos-cloudinit -validate --from-file cloud-config.yml
+- sudo coreos-install -d /dev/sda -C stable -c cloud-config.yml
 - After install gracefully shutdown guest and remove virtual boot image
 
 ## Connect to Container Linux & Check Installation
