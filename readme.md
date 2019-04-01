@@ -23,10 +23,10 @@
 - cat /etc/motd
 
 ## Install kubeadm, Kubelet, kubectl
+```
 swapoff -a
 sudo su
 
-```
 Install CNI plugins (required for most pod network):
 CNI_VERSION="v0.6.0"
 mkdir -p /opt/cni/bin
