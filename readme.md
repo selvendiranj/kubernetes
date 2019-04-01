@@ -26,6 +26,7 @@
 swapoff -a
 sudo su
 
+```
 Install CNI plugins (required for most pod network):
 CNI_VERSION="v0.6.0"
 mkdir -p /opt/cni/bin
@@ -59,7 +60,7 @@ systemctl restart kubelet
 
 
 kubeadm join 192.168.1.102:6443 --token 2l6ljb.bfowdygayi95wt7t --discovery-token-ca-cert-hash sha256:2c7787ddec84b25c68d6233fafcf23db807c94cf1b9e267ce6dc07a37614e5d8
-
+```
 
 ## Init Master Node
 
