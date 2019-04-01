@@ -52,14 +52,24 @@ curl -sSL "https://raw.githubusercontent.com/kubernetes/kubernetes/${RELEASE}/bu
 exit # exit from super user mode
 
 Enable and start kubelet:
-systemctl enable --now kubelet
+sudo systemctl enable --now kubelet
 
 Restarting the kubelet is required:
-systemctl daemon-reload
-systemctl restart kubelet
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
 
+prior to kubeadm init to verify connectivity to gcr.io registries:
+sudo kubeadm config images pull
 
-kubeadm join 192.168.1.102:6443 --token 2l6ljb.bfowdygayi95wt7t --discovery-token-ca-cert-hash sha256:2c7787ddec84b25c68d6233fafcf23db807c94cf1b9e267ce6dc07a37614e5d8
+Enable docker service prior to init:
+sudo systemctl enable docker.service
+
+Ignore cgroupfs driver warning message as cgroupfs is the docker default driver.
+
+sudo kubeadm init
+Copy the console output and save it. it is needed to join other worker node to the cluster
+
+kubeadm join 192.168.1.101:6443 --token i5f4a6.shvz07nd1a1h0yli --discovery-token-ca-cert-hash sha256:62f980861d949412076c95e222262e426566db87bd3e8c2aa63995ad616df2cb
 ```
 
 ## Init Master Node
