@@ -96,15 +96,11 @@ sudo systemctl enable docker.service
 
 Ignore cgroupfs driver warning message as cgroupfs is the docker default driver.
 
+Init the cluster (MasterNode)
 ```
 sudo kubeadm init
 ```
 Copy the console output and save it. it is needed to join other worker node to the cluster
-
-Sample token and hashkey:
-```
-kubeadm join 192.168.1.101:6443 --token i5f4a6.shvz07nd1a1h0yli --discovery-token-ca-cert-hash sha256:62f980861d949412076c95e222262e426566db87bd3e8c2aa63995ad616df2cb
-```
 
 For kubectl to work in MasterNode:
 ```shell
@@ -118,6 +114,13 @@ Setup Pod Networking
 curl https://docs.projectcalico.org/v3.5/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml -O
 kubectl apply -f calico.yaml
 ```
+
+Join the cluster (WorkerNode)
+Sample token and hashkey:
+```
+kubeadm join 192.168.1.101:6443 --token i5f4a6.shvz07nd1a1h0yli --discovery-token-ca-cert-hash sha256:62f980861d949412076c95e222262e426566db87bd3e8c2aa63995ad616df2cb
+```
+
 
 To interact with kubernetes cluster from outside cluster
 ```shell
