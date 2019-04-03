@@ -6,9 +6,11 @@
 - https://www.jsdelivr.com/?docs=gh
 - https://coreos.com/os/docs/latest/booting-with-iso.html
 - https://www.ssh.com/ssh/putty/download
+- https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization
 
 ## Container Linux Installation
 - Create VM in vmware/virtualbox/hyperv with your desired networking (NAT/Bridged/Internal)
+- If Hyperv setup virtual switch & DHCP for internet conectivity 
 - boot into downloaded container linux iso
 - Execute these commands to install coreos
 ```
