@@ -104,3 +104,9 @@ Sample token and hashkey:
 kubeadm join 192.168.1.101:6443 --token i5f4a6.shvz07nd1a1h0yli --discovery-token-ca-cert-hash sha256:62f980861d949412076c95e222262e426566db87bd3e8c2aa63995ad616df2cb
 ```
 
+For kubectl to work in MasterNode:
+```bash
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
