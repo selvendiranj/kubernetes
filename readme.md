@@ -37,6 +37,7 @@ sudo coreos-install -d /dev/sda -C stable -c cloud-config.yml
  - https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
  - https://www.aquasec.com/wiki/display/containers/70+Best+Kubernetes+Tutorials
  - https://docs.projectcalico.org/v3.6/getting-started/kubernetes/
+ - https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy
  
 ```
 swapoff -a
