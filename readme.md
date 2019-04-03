@@ -34,6 +34,7 @@ sudo coreos-install -d /dev/sda -C stable -c cloud-config.yml
  - https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/
  - https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join/
  - https://gist.github.com/kevashcraft/5aa85f44634c37a9ee05dde7e83ac7e2
+ - https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
  
 ```
 swapoff -a
