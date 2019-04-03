@@ -105,14 +105,14 @@ kubeadm join 192.168.1.101:6443 --token i5f4a6.shvz07nd1a1h0yli --discovery-toke
 ```
 
 For kubectl to work in MasterNode:
-```bash
+```shell
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 To interact with kubernetes cluster from outside cluster
-```
+```shell
 install kubectl and set in path
 scp user@<masternodeip>:/etc/kubernetes/admin.conf $HOME/.kube/config
 kuberctl version
