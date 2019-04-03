@@ -7,6 +7,7 @@
 - https://coreos.com/os/docs/latest/booting-with-iso.html
 - https://www.ssh.com/ssh/putty/download
 - https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization
+- https://www.petri.com/create-nat-rules-hyper-v-nat-virtual-switch
 
 ## Container Linux Installation
 - Create VM in vmware/virtualbox/hyperv with your desired networking (NAT/Bridged/Internal)
