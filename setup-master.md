@@ -1,4 +1,4 @@
-```bash
+```shell
 swapoff -a
 sudo su
 CNI_VERSION="v0.6.0"
