@@ -110,3 +110,10 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
+
+To interact with kubernetes cluster from outside cluster
+```
+install kubectl and set in path
+scp user@<masternodeip>:/etc/kubernetes/admin.conf $HOME/.kube/config
+kuberctl version
+```
