@@ -1,4 +1,4 @@
-```
+```bash
 swapoff -a
 sudo su
 CNI_VERSION="v0.6.0"
@@ -16,6 +16,7 @@ curl -sSL "https://raw.githubusercontent.com/kubernetes/kubernetes/${RELEASE}/bu
 mkdir -p /etc/systemd/system/kubelet.service.d
 curl -sSL "https://raw.githubusercontent.com/kubernetes/kubernetes/${RELEASE}/build/debs/10-kubeadm.conf" | sed "s:/usr/bin:/opt/bin:g" > /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 exit
+sudo systemctl enable --now kubelet
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 sudo kubeadm config images pull
