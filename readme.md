@@ -39,27 +39,28 @@ sudo coreos-install -d /dev/sda -C stable -c cloud-config.yml
  - https://www.aquasec.com/wiki/display/containers/70+Best+Kubernetes+Tutorials
  - https://docs.projectcalico.org/v3.6/getting-started/kubernetes/
  - https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy
- 
+
+
 ```
 swapoff -a
 sudo su
 ```
 
-Install CNI plugins (required for most pod network):
+### Install CNI plugins (required for most pod network):
 ```
 CNI_VERSION="v0.6.0"
 mkdir -p /opt/cni/bin
 curl -L "https://github.com/containernetworking/plugins/releases/download/${CNI_VERSION}/cni-plugins-amd64-${CNI_VERSION}.tgz" | tar -C /opt/cni/bin -xz
 ```
 
-Install crictl (required for kubeadm / Kubelet Container Runtime Interface (CRI))
+### Install crictl (required for kubeadm / Kubelet Container Runtime Interface (CRI))
 ```
 CRICTL_VERSION="v1.11.1"
 mkdir -p /opt/bin
 curl -L "https://github.com/kubernetes-incubator/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-amd64.tar.gz" | tar -C /opt/bin -xz
 ```
 
-Install kubeadm, kubelet, kubectl and add a kubelet systemd service:
+### Install kubeadm, kubelet, kubectl and add a kubelet systemd service:
 ```
 RELEASE="$(curl -sSL https://dl.k8s.io/release/stable.txt)"
 mkdir -p /opt/bin
@@ -72,42 +73,40 @@ mkdir -p /etc/systemd/system/kubelet.service.d
 curl -sSL "https://raw.githubusercontent.com/kubernetes/kubernetes/${RELEASE}/build/debs/10-kubeadm.conf" | sed "s:/usr/bin:/opt/bin:g" > /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ```
 
-exit from super user mode
+### exit from super user mode
 ```
 exit
 ```
 
-Enable and start kubelet:
+### Enable and start kubelet:
 ```
 sudo systemctl enable --now kubelet
 ```
 
-Restarting the kubelet is required:
+### Restarting the kubelet is required:
 ```
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 ```
 
-prior to kubeadm init to verify connectivity to gcr.io registries:
-
+### prior to kubeadm init to verify connectivity to gcr.io registries:
 ```
 sudo kubeadm config images pull
 ```
 
-Enable docker service prior to init:
+### Enable docker service prior to init:
 ```
 sudo systemctl enable docker.service
 ```
 
-Ignore cgroupfs driver warning message as cgroupfs is the docker default driver.
-
+### Ignore cgroupfs driver warning message as cgroupfs is the docker default driver.
 Init the cluster (MasterNode)
 ```
 priv_ip=$(ip -f inet -o addr show eth1|cut -d\  -f 7 | cut -d/ -f 1 | head -n 1)
 sudo kubeadm init --apiserver-advertise-address=$priv_ip  --pod-network-cidr=192.168.0.0/16
 ```
-Copy the console output and save it. it is needed to join other worker node to the cluster
 
+### Copy the console output and save it. it is needed to join other worker node to the cluster
 For kubectl to work in MasterNode:
 ```shell
 mkdir -p $HOME/.kube
@@ -115,20 +114,20 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-Installing a pod network add-on
+### Installing a pod network add-on
 ```
 kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/etcd.yaml
 kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/calico.yaml
 ```
 
-Join the cluster (WorkerNode)
+### Join the cluster (WorkerNode)
 Sample token and hashkey:
 ```
 kubeadm join 192.168.1.101:6443 --token i5f4a6.shvz07nd1a1h0yli --discovery-token-ca-cert-hash sha256:62f980861d949412076c95e222262e426566db87bd3e8c2aa63995ad616df2cb
 ```
 
 
-To interact with kubernetes cluster from outside cluster
+### To interact with kubernetes cluster from outside cluster
 ```shell
 install kubectl and set in path
 scp -i ~/.kube/<privatekeyfile> user@<ipaddr>:/etc/kubernetes/admin.conf ~/.kube/config
@@ -137,7 +136,7 @@ pscp -i ~/.kube/<privatekeyfile> user@<ipaddr>:/etc/kubernetes/admin.conf ~/.kub
 kuberctl version
 ```
 
-##Tear down
+## Tear down
 To undo what kubeadm did, you should first drain the node and make sure that the node is empty before shutting it down.
 Talking to the master with the appropriate credentials, run:
 ```
