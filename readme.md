@@ -101,7 +101,8 @@ Ignore cgroupfs driver warning message as cgroupfs is the docker default driver.
 
 Init the cluster (MasterNode)
 ```
-sudo kubeadm init
+priv_ip=$(ip -f inet -o addr show eth1|cut -d\  -f 7 | cut -d/ -f 1 | head -n 1)
+sudo kubeadm init --apiserver-advertise-address=$priv_ip  --pod-network-cidr=192.168.0.0/16
 ```
 Copy the console output and save it. it is needed to join other worker node to the cluster
 
@@ -114,8 +115,8 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 Installing a pod network add-on
 ```
-curl https://docs.projectcalico.org/v3.5/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml -O
-kubectl apply -f calico.yaml
+kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/etcd.yaml
+kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/calico.yaml
 ```
 
 Join the cluster (WorkerNode)
