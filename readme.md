@@ -137,3 +137,26 @@ pscp -i ~/.kube/<privatekeyfile> user@<ipaddr>:/etc/kubernetes/admin.conf ~/.kub
 kuberctl version
 ```
 
+##Tear down
+To undo what kubeadm did, you should first drain the node and make sure that the node is empty before shutting it down.
+Talking to the master with the appropriate credentials, run:
+```
+kubectl drain <node name> --delete-local-data --force --ignore-daemonsets
+kubectl delete node <node name>
+```
+
+Then, on the node being removed, reset all kubeadm installed state:
+```
+kubeadm reset
+```
+
+The reset process does not reset or clean up iptables rules or IPVS tables. If you wish to reset iptables, you must do so manually:
+```
+iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
+```
+
+If you want to reset the IPVS tables, you must run the following command:
+```
+ipvsadm -C
+```
+If you wish to start over simply run ```kubeadm init``` or ```kubeadm join``` with the appropriate arguments.
