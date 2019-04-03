@@ -116,7 +116,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 To interact with kubernetes cluster from outside cluster
 ```shell
 install kubectl and set in path
-scp -i ~/.kube/<privatekeyfile> user@<ipaddr>:/etc/kubernetes/admin.conf /$Home/.kube/config
+scp -i ~/.kube/<privatekeyfile> user@<ipaddr>:/etc/kubernetes/admin.conf ~/.kube/config
 or
 pscp -i ~/.kube/<privatekeyfile> user@<ipaddr>:/etc/kubernetes/admin.conf ~/.kube/config
 kuberctl version
