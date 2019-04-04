@@ -101,6 +101,8 @@ sudo systemctl enable docker.service
 ```
 
 ### Ignore cgroupfs driver warning message as cgroupfs is the docker default driver.
+**It is important to make sure the pod network is a non-existing network. This means that it should not be routable from any of your nodes and it may not be in the same range as your node interfaces. For example if your master node would have the IP: 192.168.0.1 and you assign the 192.168.0.0/16 range to your pod network this will cause issues. So in this case you should pick another network such as:
+/opt/bin/kubeadm init --apiserver-advertise-address=192.168.0.1 --pod-network-cidr=10.244.0.0/12**
 Init the cluster (MasterNode)
 ```
 priv_ip=$(ip -f inet -o addr show eth1|cut -d\  -f 7 | cut -d/ -f 1 | head -n 1)
