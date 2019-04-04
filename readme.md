@@ -159,3 +159,5 @@ If you want to reset the IPVS tables, you must run the following command:
 ipvsadm -C
 ```
 If you wish to start over simply run ```kubeadm init``` or ```kubeadm join``` with the appropriate arguments.
+
+If "kubectl get nodes" shows all of the nodes as one single entry, change each nodes with a different hostname in "/etc/hosts" individually and reinstalling k8s using kubespay, it will show all nodes :-)
