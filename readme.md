@@ -18,7 +18,7 @@
 curl https://cdn.jsdelivr.net/gh/jselvendiran/kubernetes/cloud_config.yaml -o cloud-config.yaml
 coreos-cloudinit -validate --from-file cloud-config.yml
 sudo coreos-install -d /dev/sda -C stable -c cloud-config.yml
-hostnamectl set-hostname <your-hostname>
+sudo hostnamectl set-hostname <your-hostname>
 ```
 - After install gracefully shutdown guest and remove virtual boot image
 
