@@ -23,7 +23,7 @@ sudo hostnamectl set-hostname <your-hostname>
 - After install gracefully shutdown guest and remove virtual boot image
 
 ## Connect to Container Linux & Check Installation
-- ssh to Node with privateKey file
+**ssh to Node with privateKey file**
 ```
 rkt version
 docker version
