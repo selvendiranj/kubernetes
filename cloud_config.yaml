@@ -1,5 +1,6 @@
 #cloud-config
 
+hostname: "Kubemaster"
 users:
   - name: "core"
     passwd: "Kubemaster@1"
