@@ -109,7 +109,7 @@ sudo systemctl enable docker.service
 Init the cluster (MasterNode)
 ```
 priv_ip=$(ip -f inet -o addr show eth0|cut -d\  -f 7 | cut -d/ -f 1 | head -n 1)
-sudo kubeadm init --apiserver-advertise-address=$priv_ip  --pod-network-cidr=192.168.1.0/16
+sudo kubeadm init --apiserver-advertise-address=$priv_ip  --pod-network-cidr=10.244.0.0/16
 ```
 
 ### Copy the console output and save it. it is needed to join other worker node to the cluster
@@ -124,6 +124,10 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/etcd.yaml
 kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/calico.yaml
+```
+Or
+```
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
 ### Join the cluster (WorkerNode)
