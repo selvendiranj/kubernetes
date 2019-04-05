@@ -108,7 +108,7 @@ sudo systemctl enable docker.service
 
 Init the cluster (MasterNode)
 ```
-priv_ip=$(ip -f inet -o addr show eth1|cut -d\  -f 7 | cut -d/ -f 1 | head -n 1)
+priv_ip=$(ip -f inet -o addr show eth0|cut -d\  -f 7 | cut -d/ -f 1 | head -n 1)
 sudo kubeadm init --apiserver-advertise-address=$priv_ip  --pod-network-cidr=192.168.0.0/16
 ```
 
