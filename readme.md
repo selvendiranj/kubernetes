@@ -121,13 +121,13 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 ### Installing a pod network add-on (Master & then all worker nodes)
+**Make sure to always use the latest stable version all kubernetes addons**
 ```
-kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/etcd.yaml
-kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/calico.yaml
+kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 ```
 Or
 ```
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.11.0/Documentation/kube-flannel.yml
 ```
 
 ### Join the cluster (WorkerNode)
