@@ -42,6 +42,7 @@ cat /etc/motd
  - https://www.aquasec.com/wiki/display/containers/70+Best+Kubernetes+Tutorials
  - https://docs.projectcalico.org/v3.6/getting-started/kubernetes/
  - https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy
+ - https://github.com/ramitsurana/awesome-kubernetes
 
 
 ```
@@ -151,6 +152,58 @@ scp -i ~/.kube/<privatekeyfile> user@<ipaddr>:/etc/kubernetes/admin.conf ~/.kube
 or
 pscp -i ~/.kube/<privatekeyfile> user@<ipaddr>:/etc/kubernetes/admin.conf ~/.kube/config
 kuberctl version
+```
+
+## Kubernetes dashboard deployment
+
+**Create Service Account**
+```
+kubectl apply -f dashboard-adminuser.yaml
+```
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kube-system
+```
+
+**Create ClusterRoleBinding**
+```
+kubectl apply -f clusterrole-binding.yaml
+```
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kube-system
+```
+
+**Get Bearer Token (Use this token for dashboard login)**
+```
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+```
+
+**To deploy Dashboard, execute following command:**
+```
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+```
+To access Dashboard from your local workstation you must create a secure channel to your Kubernetes cluster. Run the following command:
+```
+$ kubectl proxy
+```
+
+**Now access Dashboard at:**
+```
+http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
 ```
 
 ## Tear down
