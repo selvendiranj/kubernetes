@@ -24,10 +24,12 @@ sudo hostnamectl set-hostname <your-hostname>
 
 ## Connect to Container Linux & Check Installation
 - ssh to Node with privateKey file
-- rkt version
-- docker version
-- uname -r
-- cat /etc/motd
+```
+rkt version
+docker version
+uname -r
+cat /etc/motd
+```
 
 ## Install kubeadm, Kubelet, kubectl
 ### References
