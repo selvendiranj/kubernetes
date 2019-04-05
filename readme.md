@@ -120,6 +120,13 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
+For kubectl to work in WorkerNode:
+```shell
+mkdir -p $HOME/.kube
+sudo vi $HOME/.kube/config
+copy the admin.config content from masternode and paste in the vi editor. save and exit vi editor.
+```
+
 ### Installing a pod network add-on (Master & then all worker nodes)
 **Make sure to always use the latest stable version all kubernetes addons**
 ```
