@@ -120,7 +120,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-### Installing a pod network add-on
+### Installing a pod network add-on (Master & then all worker nodes)
 ```
 kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/etcd.yaml
 kubectl apply -f https://docs.projectcalico.org/master/getting-started/kubernetes/installation/hosted/calico.yaml
