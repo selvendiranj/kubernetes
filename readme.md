@@ -207,7 +207,7 @@ http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-da
 ```
 
 ## SelfSigned certificate generator for exposing services externally
-**Refer Kubernetes dashboard documents
+**Refer Kubernetes dashboard documents**
 ```
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout dashboard.key -out dashboard.crt
 ```
