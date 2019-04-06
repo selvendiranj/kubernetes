@@ -206,6 +206,12 @@ $ kubectl proxy
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
 ```
 
+## SelfSigned certificate generator for exposing services externally
+**Refer Kubernetes dashboard documents
+```
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout dashboard.key -out dashboard.crt
+```
+
 ## Tear down
 To undo what kubeadm did, you should first drain the node and make sure that the node is empty before shutting it down.
 Talking to the master with the appropriate credentials, run:
