@@ -7,3 +7,10 @@ This guide will help you to setup kubernetes cluster by creating hyperv vm on ho
  3. [All Commands](3.all-commands.md)
  4. [Setup kubernetes dashboard](4.setup-k8sdashboard.md)
  3. [Setup Weave Scope](5.setup-weavescope.md)
+
+ ## Other References
+ * Helm
+ * Prometheus
+ * Fluentd
+ * Flannel
+ * Istio

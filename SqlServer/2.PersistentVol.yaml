@@ -1,0 +1,71 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ag1-pv-volume-node1
+  namespace: ag1
+  labels:
+    type: local
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: "/var/opt/mssql"
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kubemaster
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ag1-pv-volume-node2
+  namespace: ag1
+  labels:
+    type: local
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: "/var/opt/mssql"
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kubeworker
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ag1-pv-volume-node3
+  namespace: ag1
+  labels:
+    type: local
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: "/var/opt/mssql"
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kubeworker2
